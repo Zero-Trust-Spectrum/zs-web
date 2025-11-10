@@ -1,17 +1,28 @@
-name: Deploy
+name: Zenodo Upload
 
 on:
-  push:
-    branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
-  build:
+  zenodo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Zenodo upload
+
+      - name: Package release bundle
+        run: |
+          mkdir -p dist
+          zip -r dist/zts-spectrum-reference.zip . \
+            -x "*.git*" \
+               "supporting/.DS_Store" \
+               "*/node_modules/*" \
+               "dist/*"
+
+      - name: Upload to Zenodo
         uses: megasanjay/upload-to-zenodo@v2.0.1
         with:
-          token: ${{ secrets.ZENODO_TOKEN }}
-          metadata: zenodo-metadata.json
-          file: zts_levels_reference.pdf
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          zenodo_token: ${{ secrets.ZENODO_TOKEN }}
+          zenodo_json: zenodo-metadata.json
+          file: dist/zts-spectrum-reference.zip
