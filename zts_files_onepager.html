@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zero Trust Spectrum | File Assurance One-Pager</title>
+    <meta name="author" content="Zero Trust Spectrum maintainers" />
+    <meta
+      name="description"
+      content="Zero Trust Spectrum summarizes six tiers of file assurance maturity—from pass-through handling to deterministic rebuild—for modern cyber programs."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="Zero Trust, file assurance, CDR, deterministic rebuild, NIST 800-207, NCSC, CyBOK" />
+    <link rel="canonical" href="https://zerotrustspectrum.org/files" />
+    <meta property="og:title" content="Zero Trust Spectrum | File Assurance One-Pager" />
+    <meta property="og:description" content="CyBOK-aligned framework for classifying file assurance controls across Zero-Trust architectures." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zerotrustspectrum.org/files" />
+    <meta property="og:image" content="https://zerotrustspectrum.org/assets/og-zts-files.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zero Trust Spectrum | File Assurance" />
+    <meta name="twitter:description" content="Deterministic file assurance levels (ZS-1 → ZS-6) with evaluation cues and integration patterns." />
+    <meta name="twitter:image" content="https://zerotrustspectrum.org/assets/og-zts-files.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="zts_files_onepager.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Zero Trust Spectrum — File Assurance",
+        "url": "https://zerotrustspectrum.org/files",
+        "description": "CyBOK, NIST, and NCSC aligned maturity model for file assurance (ZS-1 → ZS-6).",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Zero Trust Spectrum",
+          "url": "https://zerotrustspectrum.org",
+          "sameAs": [
+            "https://www.cybok.org/",
+            "https://www.ncsc.gov.uk/collection/zero-trust-architecture",
+            "https://csrc.nist.gov/publications/detail/sp/800-207/final"
+          ]
+        },
+        "mainEntity": {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How are ZS levels used?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Each level maps to a measurable assurance state. Assign targets per workflow based on usability, risk, and compliance signals."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do higher levels replace lower ones?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No—you often blend tiers. Critical ingress/egress runs ZS-6 while productivity paths stay on ZS-5/4."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does ZS-6 eliminate all threats?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ZS-6 minimizes dependence on detection by rebuilding structure, but you still monitor residuals like unsupported formats or policy drift."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What should I measure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Track throughput, latency percentiles, error & bypass rates, unsupported-format counts, and policy drift alerts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do flat-file exports support Zero Trust?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Neutral CSV/XML/JSON/TXT/PDF-A exports create a deterministic boundary so rebuilt data stays verifiable across cross-domain transfers, archival, or trusted analytics ingestion."
+              }
+            }
+          ]
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand">
+          <div class="brand-text">Zero Trust Spectrum</div>
+        </div>
+        <div class="chip-row">
+          <span class="chip">Zero Trust Spectrum · Files</span>
+          <a class="chip" href="https://www.cybok.org/" target="_blank" rel="noopener">CyBOK aligned</a>
+          <a class="chip" href="https://www.ncsc.gov.uk/collection/zero-trust-architecture" target="_blank" rel="noopener"
+            >NCSC aligned</a
+          >
+          <a class="chip" href="https://csrc.nist.gov/publications/detail/sp/800-207/final" target="_blank" rel="noopener"
+            >NIST SP-800-207 aligned</a
+          >
+        </div>
+        <h1>Deterministic File Assurance for Zero-Trust Programs</h1>
+        <p class="lead">
+          The Zero Trust Spectrum (ZS-1 → ZS-6) provides a CyBOK-aligned language for rating how files
+          are inspected, sanitized, isolated, or deterministically rebuilt—complete with per-dimension scores,
+          validation tests, and governance signals for <a
+            href="https://csrc.nist.gov/pubs/sp/800/207/final"
+            target="_blank"
+            rel="noopener"
+            >Zero-Trust architectures</a
+          >.
+        </p>
+        <div class="info-grid">
+          <div class="stat-card">
+            <h3>Who this is for</h3>
+            <p>CISOs, Zero-Trust program owners, security engineers, platform/product teams, delivery partners.</p>
+          </div>
+          <div class="stat-card">
+            <h3>Use it for</h3>
+            <p>Pick the minimum assurance that still satisfies risk, usability, and compliance.</p>
+          </div>
+          <div class="stat-card">
+            <h3>Download</h3>
+            <p><a href="zts_levels_reference.pdf" download>PDF: Rating Scale &amp; Levels</a></p>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel" id="contents">
+        <h2>Contents</h2>
+        <div class="contents-grid">
+          <div class="contents-card">
+            <h3>Orientation</h3>
+            <ul>
+              <li><a href="#mission">Mission Snapshot</a></li>
+              <li><a href="#scale">Rating Scale & Dimensions</a></li>
+              <li><a href="#flatfile">Flat-file Export / Import</a></li>
+            </ul>
+          </div>
+          <div class="contents-card">
+            <h3>Decide & Apply</h3>
+            <ul>
+              <li><a href="#quick-picks">Decision Quick Picks</a></li>
+              <li><a href="#levels">ZS-1 → ZS-6 Levels</a></li>
+              <li><a href="#eval-cues">Evaluation Cues</a> · <a href="#criteria">Criteria</a></li>
+            </ul>
+          </div>
+          <div class="contents-card">
+            <h3>Operate</h3>
+            <ul>
+              <li><a href="#integration">Integration Patterns</a></li>
+              <li><a href="#coverage">File Coverage</a></li>
+              <li><a href="#validation">Validation Tests</a> · <a href="#guardrails">Guardrails</a></li>
+            </ul>
+          </div>
+          <div class="contents-card">
+            <h3>Alignment</h3>
+            <ul>
+              <li><a href="#implementation">Implementation Moments</a></li>
+              <li><a href="#cybok-alignment">CyBOK</a> · <a href="#ncsc-alignment">NCSC</a> · <a href="#nist-alignment">NIST 800-207</a></li>
+            </ul>
+          </div>
+          <div class="contents-card">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#faq">FAQ</a> · <a href="#glossary">Glossary</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#begin">Where to Begin</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="mission">
+        <h2>Mission Snapshot</h2>
+        <div class="grid">
+          <div>
+            <p><strong>Purpose</strong></p>
+            <p>Declarative framework for deciding file-handling requirements inside Zero-Trust architectures.</p>
+          </div>
+          <div>
+            <p><strong>Scope</strong></p>
+            <p>Email & collab · Web/SWG/ICAP · APIs · Storage · Kiosks · Air-gapped/CDS · SDK/Embedded · File import/export</p>
+          </div>
+          <div>
+            <p><strong>Audience</strong></p>
+            <p>Security architects, platform teams, regulated industries, product leaders building trusted data flows.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="scale">
+        <h2>Rating Scale & Dimensions</h2>
+        <p>Every ZS level is scored 0 → 4 across six dimensions so buyers can compare like-for-like claims.</p>
+        <div class="scale-grid">
+          <div class="scale-card">
+            <h3>Scale (0 → 4)</h3>
+            <ul class="scale-list">
+              <li>
+                <div class="rating-pill rating-0 rating-pill--scale"><span class="rating-value">0</span> None / Heuristic</div>
+                <p>Detection or reputation only; no structural enforcement.</p>
+              </li>
+              <li>
+                <div class="rating-pill rating-1 rating-pill--scale"><span class="rating-value">1</span> Basic</div>
+                <p>Coarse rules or feature stripping; limited validation, best-effort only.</p>
+              </li>
+              <li>
+                <div class="rating-pill rating-2 rating-pill--scale"><span class="rating-value">2</span> Moderate</div>
+                <p>Isolation/flattening; limited spec awareness.</p>
+              </li>
+              <li>
+                <div class="rating-pill rating-3 rating-pill--scale"><span class="rating-value">3</span> Strong</div>
+                <p>Allow-only or spec-aware validation/repair with detailed logs.</p>
+              </li>
+              <li>
+                <div class="rating-pill rating-4 rating-pill--scale"><span class="rating-value">4</span> Deterministic</div>
+                <p>Model-driven rebuild with reproducible outcomes for supported formats.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="scale-card">
+            <h3>Dimensions</h3>
+            <ul class="dimension-list">
+              <li><strong>Mechanism rigor</strong> Strength of the control mechanism irrespective of detections.</li>
+              <li><strong>Assurance evidence</strong> Quality of conformance proof, determinism, validators, provenance.</li>
+              <li><strong>Usability fidelity</strong> How much editability and workflow fidelity is preserved.</li>
+              <li><strong>Validation test rigor</strong> Depth of acceptance tests teams can run independently.</li>
+              <li><strong>Auditability</strong> Chain-of-custody, tamper evidence, and investigative readiness.</li>
+              <li><strong>Threat coverage</strong> Active content, parser exploits, nests, obfuscation, signed content, unknowns.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="flatfile">
+        <h2><span class="section-icon">📄</span>Flat-file Export / Import</h2>
+        <p>Flat-file export/import is an essential control boundary. Many Zero-Trust architectures require exporting processed content to a flat, policy-governed format (XML, CSV, JSON, TXT, PDF/A) before re-ingestion or cross-domain movement.</p>
+        <ul class="quick-list">
+          <li>This ensures rebuilt data is validated, context-neutral, and verifiable—aligning with ZS-6 deterministic assurance while evidencing policy enforcement.</li>
+          <li>ZS-5 may emit validated/sanitized output in the native format, but structural fidelity still depends on the source file.</li>
+          <li>ZS-6 can export to neutral flat files or re-import from them, so no source-file dependency remains.</li>
+          <li>Flat-file output suits air-gap transfers, audit trails, and ingestion by downstream trusted systems; optional flat-file import supports deterministic rebuilding from clean data structures.</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="quick-picks">
+        <h2><span class="section-icon">⚙️</span>Decision Quick Picks</h2>
+        <div class="banner">
+          <strong>Baseline:</strong> Recommend ZS-6 wherever formats are supported and service objectives are met. Use ZS-5 only as a documented fallback for unsupported formats/SLO exceptions, and ZS-3 isolation for executables and unstructured binaries. Performance and coverage depend on implementation—verify with PoV data.
+        </div>
+        <ul class="quick-list">
+          <li><strong>Performance ≠ level:</strong> Throughput/latency are architecture and tuning dependent; a well-engineered ZS-6 can outperform a poorly tuned ZS-2/5.</li>
+          <li><strong>Format coverage is product-specific:</strong> Many ZS-6 offerings support dozens of formats—validate rebuild vs sanitize vs bypass per format.</li>
+          <li><strong>Policy fallback is about coverage/SLOs:</strong> Use ZS-5 fallback only when a format lacks rebuild support or an SLO demands it; use ZS-3 for binaries/installer classes that cannot be rebuilt.</li>
+          <li><strong>Supplier/customer uploads &amp; data rooms:</strong> Target ZS-6; fallback ZS-5 only for unsupported formats. External risk + audit trail means deterministic outputs; optional flat-file exports feed downstream apps safely.</li>
+          <li><strong>Exec / finance / legal attachments:</strong> Target ZS-6 for Office/PDF/images; fallback ZS-5. Sensitive workflows demand evidencing plus fidelity.</li>
+          <li><strong>General collaboration (M365/Workspace, SharePoint/Drive):</strong> Target ZS-6 for all supported formats; fallback to ZS-5 only for unsupported or custom types. ZS-3 isolation reserved for executables/archives that cannot be rebuilt.</li>
+          <li><strong>Web downloads &amp; SWG:</strong> Docs/images/media → ZS-6 if supported &amp; SLOs met; else ZS-5. Unknown binaries/installers → ZS-3 isolation. Tier high-volume CDN flows by MIME, size, and reputation.</li>
+          <li><strong>Cross-domain / air-gap / OT/classified:</strong> Transfer path at ZS-6 with strict policy + reporting plus optional flat-file export/import; review path via ZS-3 read-only previews.</li>
+          <li><strong>Storage &amp; archival remediation:</strong> Enable flat-file export mode for long-term governance so structural metadata and policy outcomes persist apart from original content.</li>
+          <li><strong>Automation &amp; integration pipelines (API/SDK):</strong> Require flat-file interchange (XML/JSON schema) for validated objects feeding analytics, ETL, SIEM, or DLP workflows.</li>
+          <li><strong>Developer tools &amp; installers:</strong> Docs/packages → ZS-5 (ZS-6 where supported). Executables → ZS-3 isolation plus repo/code-sign controls.</li>
+        </ul>
+      </section>
+
+      <section id="levels" class="panel">
+        <h2><span class="section-icon">🧱</span>Zero Trust Spectrum Levels</h2>
+        <div class="grid levels-grid">
+          <article class="level-card" data-tier="ZS-1">
+            <span class="tier-tag"><strong>ZS-1</strong> · Baseline</span>
+            <strong>Pass-through / Uninspected</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-0"><span class="rating-value">0</span> None / Heuristic</div>
+                <p class="attr-copy">Allow/forward or AV-only; enforcement is purely detection based.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-0"><span class="rating-value">0</span> None / Heuristic</div>
+                <p class="attr-copy">No structural proof, determinism, or provenance beyond AV verdicts.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Full editability and zero latency because files are untouched.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-0"><span class="rating-value">0</span> None / Heuristic</div>
+                <p class="attr-copy">Malformed or macro-laden samples still pass, revealing lack of control.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-0"><span class="rating-value">0</span> None / Heuristic</div>
+                <p class="attr-copy">Only coarse pass/fail telemetry; no tamper-evident chain of custody.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-0"><span class="rating-value">0</span> None / Heuristic</div>
+                <p class="attr-copy">No mitigation for macros, parser exploits, nesting, obfuscation, or unknowns.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="level-card" data-tier="ZS-2">
+            <span class="tier-tag"><strong>ZS-2</strong> · Policy</span>
+            <strong>Rule-based Sanitization</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Policy strips macros/scripts/links yet leaves underlying structure untouched.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Evidence is limited to policy-hit logs; little spec validation.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">High usability apart from removed risky features.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Seed macros/OLE to verify removal plus reason codes.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Lists of removed constructs, but minimal per-object provenance.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Handles common active content yet struggles with parser or obfuscated attacks.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="level-card" data-tier="ZS-3">
+            <span class="tier-tag"><strong>ZS-3</strong> · Isolation</span>
+            <strong>Flatten / Isolate</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-2"><span class="rating-value">2</span> Moderate</div>
+                <p class="attr-copy">Static rendering or remote isolation keeps active content away from endpoints.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-2"><span class="rating-value">2</span> Moderate</div>
+                <p class="attr-copy">Isolation telemetry shows containment but not rebuild-grade determinism.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-1"><span class="rating-value">1</span> Basic</div>
+                <p class="attr-copy">Mostly read-only or limited interactivity—great for triage, not authoring.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-2"><span class="rating-value">2</span> Moderate</div>
+                <p class="attr-copy">Deliver active content and confirm flattened or isolated presentation.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-2"><span class="rating-value">2</span> Moderate</div>
+                <p class="attr-copy">Session logs and release/deny trails support investigations.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-2"><span class="rating-value">2</span> Moderate</div>
+                <p class="attr-copy">Neutralizes active content during viewing; downloads may still carry original bytes.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="level-card" data-tier="ZS-4">
+            <span class="tier-tag"><strong>ZS-4</strong> · Allow-only</span>
+            <strong>Allow-only (DDR)</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Positive selection copies only allow-listed structures into safe templates.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Template coverage and exception manifests provide repeatable assurances.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">High usability for modelled features; coverage gaps require new templates.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Inject allowed/disallowed elements and observe copy/drop evidence.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Template IDs, policy versions, and exception logs support traceability.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Covers modelled embeds/nests/obfuscation but only where templates exist.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="level-card" data-tier="ZS-5">
+            <span class="tier-tag"><strong>ZS-5</strong> · Repair</span>
+            <strong>Deep Parsing & Repair</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Spec-aware parsing plus repair/sanitise routines enforce structure; outputs can be emitted in the native format or optional flat-file exports, but still reference original structure.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Validation/repair logs act as conformance evidence per object.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Maintains authoring fidelity while repairing defects deterministically.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Spec-violating samples should surface precise repair telemetry.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Per-object validation traces, repair counts, and policy diffs.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-3"><span class="rating-value">3</span> Strong</div>
+                <p class="attr-copy">Covers macros, parser exploits, nests, and obfuscation for supported formats; optional flat-file exports aid downstream review but remain tied to sanitized source semantics.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="level-card" data-tier="ZS-6">
+            <span class="tier-tag"><strong>ZS-6</strong> · Rebuild</span>
+            <strong>True Rebuild (Safe Blueprint)</strong>
+            <ul class="attr-list">
+              <li class="attr-item">
+                <div class="attr-label">Mechanism rigor</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Model-driven rebuild outputs new spec-compliant files with no unsafe bytes and can natively export/import neutral flat files (XML/JSON/CSV/PDF-A) for air-gap or analytic flows.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Assurance evidence</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Validators plus provenance prove deterministic results per file.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Usability fidelity</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Full fidelity for supported formats while eliminating risky source bytes.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Validation test rigor</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Diff input/output, review validator logs, and confirm provenance packages.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Auditability</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Signed manifests, hashes, policy IDs, and tamper-evident logs per submission.</p>
+              </li>
+              <li class="attr-item">
+                <div class="attr-label">Threat coverage</div>
+                <div class="rating-pill rating-4"><span class="rating-value">4</span> Deterministic</div>
+                <p class="attr-copy">Mitigates macros, parser exploits, nests, obfuscation—flat-file export/import provides a clean break for cross-domain transfer; fallbacks defined for unsupported formats.</p>
+              </li>
+            </ul>
+          </article>
+        </div>
+        <hr class="divider" />
+        <p>
+          Each tier defines how the control handles encrypted payloads, nested archives, macros, scripts, active content,
+          media, metadata, and unsupported formats. Advance maturity when operational risk or regulatory posture demands it.
+        </p>
+        <p><em>Summary:</em> ZS-1 pass-through · ZS-2 policy sanitize · ZS-3 flatten/isolate · ZS-4 positive selection · ZS-5 deep parsing & repair · ZS-6 deterministic rebuild.</p>
+      </section>
+
+      <section class="panel" id="eval-cues">
+        <h2><span class="section-icon">🔍</span>Evaluation Cues</h2>
+        <ul class="list">
+          <li>Per-format handling: pass, sanitize, isolate, repair, or rebuild—including encrypted or nested files.</li>
+          <li>Evidence: validation traces, policy actions, forensic logging, handover to SIEM/SOAR.</li>
+          <li>Coverage: connectors for email, ICAP/SWG, APIs/SDK, storage/EDR, kiosk, air-gapped/CDS workflows.</li>
+          <li>Operations: throughput, latency, offline cadence, update hygiene, and failure-handling playbooks.</li>
+          <li>Governance: KPIs, assurance statements, and security testing for each tier adoption.</li>
+        </ul>
+      </section>
+
+ 
+      <section class="panel" id="criteria">
+        <h2><span class="section-icon">📋</span>Evaluation Criteria</h2>
+        <div class="grid">
+          <div>
+            <p><strong>Functional</strong></p>
+            <ul class="list">
+              <li>Mechanism type and visibility (pass, sanitise, rebuild).</li>
+              <li>Encrypted/password-protected handling.</li>
+              <li>Nested/archived content support.</li>
+              <li>Export/import to flat structured formats (CSV, XML, JSON, TXT, PDF/A).</li>
+              <li>Ability to rebuild directly from validated flat data for deterministic ZS-6 workflows.</li>
+              <li>Policy configuration depth per format/feature.</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Governance & Interop</strong></p>
+            <ul class="list">
+              <li>Policy versioning, audit trails, and tamper-evident logs.</li>
+              <li>DLP/SOAR/SIEM integration and open telemetry (API/syslog).</li>
+              <li>Export sanitised/rebuilt outputs to safe zones; store or transmit clean flat files as audit artifacts and cross-domain handoffs.</li>
+              <li>Open standards, schema alignment, and reproducible SLO reporting.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="integration">
+        <h2><span class="section-icon">🧩</span>Integration Patterns</h2>
+        <div class="grid">
+          <div>
+            <p><strong>Core processing flows</strong></p>
+            <ul class="list">
+              <li>Email / Collaboration (inline or API): M365, Google Workspace, SEG, SMTP relay, API ingestion.</li>
+              <li>Web / SWG / Proxy (ICAP / reverse-proxy / WAF): upload & download enforcement with identity-aware policies.</li>
+              <li>Storage / Archive (on-ingest + scheduled): S3, NAS, SharePoint, Azure Blob with retention/governance hooks.</li>
+              <li>Application / SDK / API (sync / async): deep embedding into custom apps, brokers, or zero-trust gateways.</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Operational & isolated environments</strong></p>
+            <ul class="list">
+              <li>Kiosk / Air-gap / Cross-domain (CDS): export/import via neutral flat files; deterministic rebuild between networks.</li>
+              <li>OT / Industrial / Classified networks: deterministic enforcement at transfer guard boundaries with policy directionality.</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Automation & ecosystem integration</strong></p>
+            <ul class="list">
+              <li>SOAR / DLP / SIEM / UEBA: event forwarding, orchestration hooks, automated remediation.</li>
+              <li>EDR / XDR / Email Security / CASB: complementary enforcement via shared telemetry and policy alignment.</li>
+              <li>Data Governance / Compliance / Audit: policy reports, per-file assurance logs, retention labeling, regulatory evidence.</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Developer & operational enablement</strong></p>
+            <ul class="list">
+              <li>CLI / Container / K8s operators: scalable cluster processing with declarative pipelines.</li>
+              <li>API Gateway / ESB / Workflow engines: inline validation for automated data exchange.</li>
+              <li>Flat-file export / import: deterministic output/input for analytics, ETL, SIEM/DLP, or cross-domain transfer.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="coverage">
+        <h2><span class="section-icon">📁</span>File Coverage Reality Check</h2>
+        <p>Breadth ≠ depth. Build a file-coverage register and rate each format by mechanism and fallback.</p>
+        <div class="badge-stack">
+          <span class="badge">Office & Productivity</span>
+          <span class="badge">PDF & Print Streams</span>
+          <span class="badge">CAD / BIM</span>
+          <span class="badge">Media & Imagery</span>
+          <span class="badge">Archives & Containers</span>
+          <span class="badge">Custom / Legacy Formats</span>
+        </div>
+        <ul class="quick-list" style="margin-top:12px;">
+          <li>List formats by family (Office, PDF, images, archives, CAD/media, text/flat, specialized).</li>
+          <li>Document per-format ZS level (6/5/4/3), limitations, nested content handling, password/encrypted behavior, max size/complexity.</li>
+          <li>State default fallback (e.g., unsupported → ZS-3 isolate or block) and note that “more formats” ≠ higher assurance—depth of rebuild/sanitization matters most.</li>
+        </ul>
+        <div class="threat-grid">
+          <div class="threat-card">
+            <h3>Active content</h3>
+            <p>Macros, scripts, JS, OLE, XFA, plug-ins.</p>
+          </div>
+          <div class="threat-card">
+            <h3>Parser exploits</h3>
+            <p>Memory corruption, malformed structures, decompression abuse.</p>
+          </div>
+          <div class="threat-card">
+            <h3>Embedded & nested</h3>
+            <p>Linked objects, nested archives, container recursion.</p>
+          </div>
+          <div class="threat-card">
+            <h3>Obfuscation</h3>
+            <p>Polyglots, malformed metadata, stego tricks.</p>
+          </div>
+          <div class="threat-card">
+            <h3>Signed content</h3>
+            <p>Trusted-but-malicious or expired signatures; re-signing expectations.</p>
+          </div>
+          <div class="threat-card">
+            <h3>Unknown / 0-day</h3>
+            <p>Unsupported formats or feature abuse—define default fallbacks.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="validation">
+        <h2><span class="section-icon">🧪</span>Validation Tests & Signals</h2>
+        <p><strong>Dataset essentials:</strong> macros/OLE, PDF JS & launch actions, nested archives (depth &gt; 5), polyglots (PDF/ZIP), malformed EXIF/media metadata, passworded samples, malformed containers.</p>
+        <p><strong>Expectations:</strong></p>
+        <ul class="list">
+          <li>ZS-3 → static renders or isolation boundaries enforced for every submission.</li>
+          <li>ZS-4 / ZS-5 → per-element logs for copied, repaired, or removed content plus exception handling.</li>
+          <li>ZS-6 → no unsafe source-byte carryover, validator report attached, provenance with input/output hashes and policy IDs.</li>
+        </ul>
+        <p><strong>Signals to emit:</strong> outcome code, reason, elements copied/removed/repaired, validator findings, archive tree, input/output hashes, policy version, latency/error stats.</p>
+      </section>
+
+      <section class="panel" id="guardrails">
+        <h2><span class="section-icon">🛡️</span>Guardrails & Defaults</h2>
+        <div class="guardrail-grid">
+          <div class="guardrail-block">
+            <h3>Encrypted / Passworded</h3>
+            <ul class="guardrail-list">
+              <li>Block or decrypt inside a trusted zone before processing.</li>
+              <li>Never emit original bytes; log crypto metadata and avoid storing plaintext.</li>
+            </ul>
+          </div>
+          <div class="guardrail-block">
+            <h3>Archives & Nesting</h3>
+            <ul class="guardrail-list">
+              <li>Recurse with safe depth/size limits.</li>
+              <li>Apply the target ZS level to each extracted item and rebuild deterministically.</li>
+              <li>Detect polyglots and MIME/type mismatches.</li>
+            </ul>
+          </div>
+          <div class="guardrail-block">
+            <h3>Unknown / Unsupported</h3>
+            <ul class="guardrail-list">
+              <li>Default to block or ZS-3 isolate.</li>
+              <li>Time-bound exceptions with precise telemetry.</li>
+            </ul>
+          </div>
+          <div class="guardrail-block">
+            <h3>Signed Content</h3>
+            <ul class="guardrail-list">
+              <li>Validate before processing.</li>
+              <li>Preserve provenance metadata; re-sign outputs in a trusted zone when signatures must persist.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="panel" id="implementation">
+        <h2><span class="section-icon">🧠</span>Implementation Moments that Matter</h2>
+        <div class="grid">
+          <div>
+            <p><strong>Integration Surface</strong></p>
+            <p>ICAP, REST, event-driven, inline or asynchronous flows, SDK kits for embedded OEM or on-device use (M365 Graph, SharePoint, Google Drive APIs, etc.).</p>
+          </div>
+          <div>
+            <p><strong>Assurance Proof</strong></p>
+            <p>Signed manifests, replayable logs, policy versioning, attestation packages per submission.</p>
+          </div>
+          <div>
+            <p><strong>Human Factors</strong></p>
+            <p>UI/UX for releases, exception handling, succinct user messaging, governance dashboards.</p>
+          </div>
+          <div>
+            <p><strong>PoV & SLO discipline</strong></p>
+            <p>Measure p95/p99 latency and sustained throughput per format/level on intended infrastructure, track fidelity and error handling, publish SLOs by flow (email/web/storage/API) with the chosen ZS per format.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="cybok-alignment">
+        <h2><span class="section-icon">📚</span>CyBOK Alignment Signals</h2>
+        <ul class="cybok-list">
+          <li><strong>Isolation & least common mechanism:</strong> ZS-3 limits code execution while ZS-4/5/6 constrain flows per OS & virtualisation guidance.</li>
+          <li><strong>Malware & obfuscation coverage:</strong> Positive selection and rebuild reduce dependence on signatures for packed, polymorphic, and script-based threats.</li>
+          <li><strong>Web/mobile client risks:</strong> Structural controls mitigate the active-content attack surface that dominates appified ecosystems.</li>
+          <li><strong>Formal assurance realism:</strong> Deterministic rebuilds plus validator outputs document assumptions when full formal proofs are impractical.</li>
+          <li><strong>Forensics & auditability:</strong> Chain-of-custody, reproducibility, and tamper-evident logs align with ACPO and ISO/IEC 17025 style expectations.</li>
+          <li><strong>Secure SDL practices:</strong> Validation tests map to threat modelling, metrics/KPIs, memory-safety, and CI/CD gating guidance from CyBOK.</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="ncsc-alignment">
+        <h2><span class="section-icon">🛡️</span>NCSC Alignment Signals</h2>
+        <ul class="cybok-list">
+          <li><strong>Zero-Trust enforcement plane:</strong> ZS-levels define discrete policy enforcement stages consistent with NCSC Zero Trust Architecture.</li>
+          <li><strong>Explicit verification:</strong> Every file crossing a trust boundary is validated to policy before use—mirrors “never trust, always verify.”</li>
+          <li><strong>Least privilege data flow:</strong> ZS-4 → ZS-6 enforce minimal-trust exchange, removing executable or ambiguous payloads.</li>
+          <li><strong>Assume breach pragmatism:</strong> Rebuild and isolation tiers sustain assurance even when detection or endpoint trust fails.</li>
+          <li><strong>Continuous assurance:</strong> Validation and remediation logs provide verifiable evidence streams for governance and SOC integration.</li>
+          <li><strong>Composability:</strong> Spectrum tiers align with NCSC guidance on layered assurance, compartmentalisation, and data-centric protection.</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="nist-alignment">
+        <h2><span class="section-icon">🏛️</span>NIST SP 800-207 Alignment Signals</h2>
+        <ul class="cybok-list">
+          <li><strong>Policy enforcement point mapping:</strong> ZS processing embodies a content-centric PEP mediating data before trust decisions.</li>
+          <li><strong>Dynamic trust evaluation:</strong> ZS-levels represent variable assurance tied to contextual risk, paralleling NIST’s decision/enforcement model.</li>
+          <li><strong>Continuous diagnostics & mitigation:</strong> Per-file telemetry feeds broader CDM pipelines for adaptive risk management.</li>
+          <li><strong>Separation of control & data planes:</strong> ZS-6 deterministic rebuild ensures untrusted bytes never traverse trusted domains directly.</li>
+          <li><strong>Least-privilege workflow:</strong> Each spectrum step limits access to verified content only, echoing NIST least-privilege at the data layer.</li>
+          <li><strong>Evidence-driven architecture:</strong> Spec-validation outputs and provenance records provide measurable trust evidence expected by mature ZT implementations.</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="faq">
+        <h2><span class="section-icon">❓</span>FAQ</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>How are ZS levels used?</h3>
+            <p>Each level maps to a measurable assurance state. Assign targets per workflow based on usability, risk, and compliance signals.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do higher levels replace lower ones?</h3>
+            <p>No—you often blend tiers. Critical ingress/egress runs ZS-6 while productivity paths stay on ZS-5/4.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Does ZS-6 eliminate all threats?</h3>
+            <p>ZS-6 minimizes dependence on detection by rebuilding structure, but you still monitor residuals like unsupported formats or policy drift.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What should I measure?</h3>
+            <p>Track throughput, P50/95/99 latency, error & bypass rates, unsupported-format counts, and policy drift alerts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="glossary">
+        <h2><span class="section-icon">ℹ️</span>Glossary</h2>
+        <p>Key terms referenced across ZS levels and evaluation criteria.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Content Disarm &amp; Reconstruction (CDR)</h3>
+            <p>Deterministic extraction and rebuild of file content. See <a href="https://en.wikipedia.org/wiki/Content_disarm_and_reconstruction" target="_blank" rel="noopener">reference</a>.</p>
+          </div>
+          <div class="card">
+            <h3>Positive Selection / DDR</h3>
+            <p>Copy only known-good elements into safe templates (ZS-4). Unknown items are removed by policy design.</p>
+          </div>
+          <div class="card">
+            <h3>Flat-file export/import</h3>
+            <p>Neutral CSV/XML/JSON/TXT/PDF-A outputs used for cross-domain transfer, archival, or deterministic re-ingestion.</p>
+          </div>
+          <div class="card">
+            <h3>Policy Enforcement Point (PEP)</h3>
+            <p>A control plane described in NIST SP 800-207; here it is the file-processing tier mediating untrusted inputs.</p>
+          </div>
+          <div class="card">
+            <h3>Deterministic rebuild</h3>
+            <p>ZS-6 capability to create a clean intermediary model and emit a fresh spec-compliant file with provenance.</p>
+          </div>
+          <div class="card">
+            <h3>Validation test harness</h3>
+            <p>Repeatable dataset + telemetry capture used to verify claims (sometimes called “buyer tests”).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="references">
+        <h2><span class="section-icon">🔗</span>References</h2>
+        <ol class="reference-list">
+          <li>
+            <a href="https://csrc.nist.gov/publications/detail/sp/800-207/final" target="_blank" rel="noopener"
+              >NIST SP 800-207 – Zero Trust Architecture (Dec 2020)</a
+            >
+          </li>
+          <li>
+            <a href="https://www.ncsc.gov.uk/collection/zero-trust-architecture" target="_blank" rel="noopener"
+              >NCSC Zero-Trust Architecture Collection</a
+            >
+          </li>
+          <li>
+            <a href="https://www.cybok.org/" target="_blank" rel="noopener">CyBOK – Cyber Security Body of Knowledge</a>
+          </li>
+          <li>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons BY 4.0 License</a>
+          </li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>Zero Trust Spectrum · Files · Version 2025-11-10</p>
+        <p>
+          Zero Trust Spectrum © 2025 ·
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
+        </p>
+        <p>An open reference framework for file assurance within Zero-Trust architectures.</p>
+        <p>
+          Aligned with
+          <a href="https://www.ncsc.gov.uk/collection/zero-trust-architecture" target="_blank" rel="noopener">NCSC</a> /
+          <a href="https://csrc.nist.gov/publications/detail/sp/800-207/final" target="_blank" rel="noopener">NIST SP 800-207</a> /
+          <a href="https://www.cybok.org/" target="_blank" rel="noopener">CyBOK</a>.
+        </p>
+        <p>Questions or suggestions? Contact the maintainers:
+          <a href="mailto:editor@zerotrustspectrum.org">editor@zerotrustspectrum.org</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
