@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "title": "Zero Trust Spectrum — File Assurance Levels",
+    "upload_type": "publication",
+    "publication_type": "report",
+    "description": "CyBOK-, NCSC-, and NIST-aligned reference covering the ZS-1 → ZS-6 file assurance spectrum, rating scales, and decision guidance.",
+    "creators": [
+      {"name": "Zero Trust Spectrum maintainers"}
+    ],
+    "keywords": ["Zero Trust", "CDR", "deterministic rebuild", "file assurance"],
+    "language": "eng"
+  }
+}

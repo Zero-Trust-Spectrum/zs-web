@@ -1,5 +1,8 @@
 # Zero-Trust Spectrum — Files
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17573364.svg)](https://doi.org/10.5281/zenodo.17573364)\
+
+
 **Framework defining measurable Zero-Trust assurance levels for file content (ZS-1 → ZS-6).**  
 Aligned with **CyBOK · NCSC · NIST SP-800-207** · Licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 
