@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zenodo upload
+        uses: megasanjay/upload-to-zenodo@v2.0.1
+        with:
+          token: ${{ secrets.ZENODO_TOKEN }}
+          metadata: zenodo-metadata.json
+          file: zts_levels_reference.pdf
