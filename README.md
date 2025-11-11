@@ -1,6 +1,6 @@
 # Zero-Trust Spectrum — Files
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17573364.svg)](https://doi.org/10.5281/zenodo.17573364)\
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17576466.svg)](https://doi.org/10.5281/zenodo.17576466)
 
 
 **Framework defining measurable Zero-Trust assurance levels for file content (ZS-1 → ZS-6).**  
@@ -66,7 +66,8 @@ All contributions are released under CC BY 4.0.
 
 ## Citation
 If citing in research or policy:
-> “Zero-Trust Spectrum — Files (ZS-1 → ZS-6), version 2025-11-10, CC BY 4.0.”
+> Zero-Trust Spectrum — Files (ZS-1 → ZS-6), version 2025-11-10.  
+> DOI: [10.5281/zenodo.17576466](https://doi.org/10.5281/zenodo.17576466)
 
 ---
 
@@ -74,3 +75,7 @@ If citing in research or policy:
 Zero-Trust Spectrum © 2025 · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
 An open reference for measurable file assurance within Zero-Trust architectures.  
 Maintained by independent contributors.
+
+---
+
+Maintained by independent contributors · ORCID: [0009-0003-9242-4790](https://orcid.org/0009-0003-9242-4790)
