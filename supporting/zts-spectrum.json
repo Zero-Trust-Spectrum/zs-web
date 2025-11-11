@@ -1,0 +1,141 @@
+{
+  "version": "1.1.1",
+  "doi": "10.5281/zenodo.17576466",
+  "overview": {
+    "summary": "Zero-Trust Spectrum (Files) defines six assurance levels (ZS-1 → ZS-6) for file handling inside zero-trust architectures, aligned with NIST SP-800-207, UK NCSC Zero-Trust Architecture, and CyBOK.",
+    "audience": [
+      "CISOs",
+      "Zero-Trust program owners",
+      "Security engineers",
+      "Platform/product teams",
+      "Delivery partners"
+    ],
+    "license": "CC BY 4.0",
+    "publication_date": "2025-11-10"
+  },
+  "zs_levels": [
+    {
+      "level": "ZS-1",
+      "label": "Pass-through",
+      "mechanism": "Implicit trust",
+      "description": "Files accepted without verification; basic metadata/access checks only.",
+      "assurance": "Minimal"
+    },
+    {
+      "level": "ZS-2",
+      "label": "Detection",
+      "mechanism": "Known-threat identification",
+      "description": "Signature/hash/pattern recognition detects known threats but cannot assure safety.",
+      "assurance": "Low"
+    },
+    {
+      "level": "ZS-3",
+      "label": "Isolation / Flattening",
+      "mechanism": "Behavioural containment",
+      "description": "Executes or renders files in controlled environments to prevent direct interaction.",
+      "assurance": "Containment"
+    },
+    {
+      "level": "ZS-4",
+      "label": "Sanitisation (DDR)",
+      "mechanism": "Rule-based removal / allow-only copying",
+      "description": "Strips or copies only allow-listed elements, removing macros, scripts, links, active content.",
+      "assurance": "Policy-enforced"
+    },
+    {
+      "level": "ZS-5",
+      "label": "Transform",
+      "mechanism": "Rebuild via known-good templates",
+      "description": "Parses and reconstructs files to conform to safe models; removes unsafe components via software rebuild.",
+      "assurance": "High structural"
+    },
+    {
+      "level": "ZS-6",
+      "label": "Deterministic Rebuild",
+      "mechanism": "Clean intermediary model; no source bytes retained",
+      "description": "Files fully deconstructed and rebuilt from specification; output validated to spec with audit evidence; supports neutral flat-file export/import.",
+      "assurance": "Maximum (true zero trust)"
+    }
+  ],
+  "classification_criteria": {
+    "dimensions": [
+      "content_verification",
+      "structural_enforcement",
+      "policy_conformance",
+      "audit_evidence",
+      "fidelity_usability"
+    ],
+    "matrix": {
+      "content_verification": ["None", "Partial (signatures)", "Partial (behavioural)", "Moderate", "Full", "Full (spec-level)"],
+      "structural_enforcement": ["None", "None", "Partial", "Moderate", "Full (software)", "Full + independent verification"],
+      "policy_conformance": ["None", "Basic", "Contextual", "Enforced rules", "Full", "Full, provable"],
+      "audit_evidence": ["None", "Minimal", "Limited logs", "Moderate", "Comprehensive", "Deterministic & tamper-evident"],
+      "fidelity_usability": ["Full", "Full", "Read-only", "High", "High", "Spec-compliant"]
+    },
+    "evidence_expectations": "Above ZS-4 requires conformance testing, proof of no source-byte persistence, policy enforcement traceability, validation/verification steps, and reproducible audit trails."
+  },
+  "decision_quick_picks": [
+    {
+      "workflow": "Supplier/customer uploads & data rooms",
+      "target": "ZS-6",
+      "fallback": "ZS-5",
+      "notes": "Deterministic outputs plus audit trail; flat-file handoffs supported."
+    },
+    {
+      "workflow": "Exec / finance / legal attachments",
+      "target": "ZS-6",
+      "fallback": "ZS-5",
+      "notes": "Sensitive content requires evidencing and document fidelity."
+    },
+    {
+      "workflow": "General collaboration (M365/Workspace, SharePoint/Drive)",
+      "target": "ZS-6",
+      "fallback": "ZS-5 (unsupported formats)",
+      "notes": "Deterministic rebuild preserves usability; ZS-3 only for non-rebuildable binaries/archives."
+    },
+    {
+      "workflow": "Web downloads & SWG",
+      "target": "ZS-6",
+      "fallback": "ZS-5",
+      "notes": "Unknown binaries/installers default to ZS-3 isolation; tier by MIME/size/source reputation."
+    },
+    {
+      "workflow": "Cross-domain / air-gap / OT/classified",
+      "target": "ZS-6",
+      "fallback": "ZS-3",
+      "notes": "Transfer path uses deterministic rebuild + reporting; review path via ZS-3 preview."
+    },
+    {
+      "workflow": "Storage & archival remediation",
+      "target": "ZS-6",
+      "fallback": "ZS-5",
+      "notes": "Flat-file export mode maintains governance metadata separate from originals."
+    },
+    {
+      "workflow": "Automation & integration pipelines (API/SDK)",
+      "target": "ZS-6",
+      "fallback": "ZS-5",
+      "notes": "Require flat-file interchange (XML/JSON schema) for analytics, ETL, SIEM/DLP ingestion."
+    },
+    {
+      "workflow": "Developer tools & installers",
+      "target": "ZS-5",
+      "fallback": "ZS-3",
+      "notes": "Docs/packages rebuilt; executables isolated alongside repo/code-sign controls."
+    }
+  ],
+  "flat_file_position": "Flat-file export/import (CSV, XML, JSON, TXT, PDF/A) is an essential control boundary for deterministic separation between untrusted sources and clean destinations. ZS-6 implementations typically support neutral exports for cross-domain transfer, archival, and deterministic re-ingestion.",
+  "implementation_notes": "ZS-6 mechanisms perform deterministic rebuild from a clean intermediary model, retaining no source data and verifying outputs against specification; adopted in defense, intelligence, and high-assurance domains requiring provable zero-trust enforcement.",
+  "alignment": {
+    "cybok": ["Isolation and least-common-mechanism", "Malware/obfuscation coverage", "Client-side risk mitigation", "Forensic readiness", "Secure SDL practices"],
+    "ncsc": ["Discrete policy enforcement planes", "Explicit verification", "Least-privilege data flows", "Assume-breach stance", "Continuous assurance", "Layered composability"],
+    "nist_sp_800_207": ["Content-centric policy enforcement points", "Dynamic trust evaluation", "Continuous diagnostics & mitigation", "Separation of control/data planes", "Evidence-driven architecture"]
+  },
+  "glossary": {
+    "CDR": "Content Disarm & Reconstruction; deterministic extraction/rebuild to remove risk.",
+    "Positive Selection": "Allow-only copying into safe templates (ZS-4).",
+    "Flat-file export": "Neutral format outputs used for cross-domain transfer/archival.",
+    "Deterministic rebuild": "ZS-6 capability where files are reconstructed from clean intermediary models with spec validation."
+  },
+  "contact": "editor@zerotrustspectrum.org"
+}
