@@ -30,14 +30,16 @@ Applicable to:
 ---
 
 ## Spectrum Levels
-| Level | Description | Assurance Summary |
-|-------|--------------|------------------|
-| **ZS-1** | Pass-through / uninspected | Minimal assurance |
-| **ZS-2** | Rule-based sanitization | Policy-driven, partial |
-| **ZS-3** | Flatten / isolate | Strong containment |
-| **ZS-4** | Allow-only (DDR) | Positive-selection, rule-based |
-| **ZS-5** | Deep parse / validate-repair | High structural assurance |
-| **ZS-6** | Deterministic rebuild (safe blueprint) | Maximum assurance; new file generated from clean model |
+| Level | Mechanism | Assurance Summary |
+|-------|-----------|-------------------|
+| **ZS-1** | Pass-through | Implicit trust; no verification |
+| **ZS-2** | Detection | Signature/hash-based identification of known threats |
+| **ZS-3** | Isolation / Flattening | Behavioural containment / read-only rendering |
+| **ZS-4** | Sanitisation (DDR) | Rule-based removal or allow-only copying |
+| **ZS-5** | Transform to templates | Software rebuild from known-good models |
+| **ZS-6** | Deterministic rebuild | Clean intermediary model; no source bytes retained; spec-level validation with audit evidence |
+
+For formal definitions and criteria, see the [Zero-Trust Spectrum (Files) reference](https://doi.org/10.5281/zenodo.17576466).
 
 ---
 

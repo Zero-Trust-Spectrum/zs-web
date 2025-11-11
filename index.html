@@ -35,65 +35,19 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Zero Trust Spectrum - File Assurance",
-        "url": "https://zerotrustspectrum.org/files",
-        "description": "CyBOK, NIST, and NCSC aligned maturity model for file assurance (ZS-1 → ZS-6).",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Zero Trust Spectrum",
-          "url": "https://zerotrustspectrum.org",
-          "sameAs": [
-            "https://www.cybok.org/",
-            "https://www.ncsc.gov.uk/collection/zero-trust-architecture",
-            "https://csrc.nist.gov/publications/detail/sp/800-207/final"
-          ]
-        },
-        "mainEntity": {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How are ZS levels used?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Each level maps to a measurable assurance state. Assign targets per workflow based on usability, risk, and compliance signals."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do higher levels replace lower ones?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No, you often blend tiers. Critical ingress/egress runs ZS-6 while productivity paths stay on ZS-5/4."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does ZS-6 eliminate all threats?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "ZS-6 minimizes dependence on detection by rebuilding structure, but you still monitor residuals like unsupported formats or policy drift."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What should I measure?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Track throughput, latency percentiles, error & bypass rates, unsupported-format counts, and policy drift alerts."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do flat-file exports support Zero Trust?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Neutral CSV/XML/JSON/TXT/PDF-A exports create a deterministic boundary so rebuilt data stays verifiable across cross-domain transfers, archival, or trusted analytics ingestion."
-              }
-            }
-          ]
-        }
+        "@type": "DefinedTermSet",
+        "name": "Zero-Trust Spectrum (Files)",
+        "identifier": "https://doi.org/10.5281/zenodo.7576466",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "description": "Framework defining six assurance levels (ZS-1 → ZS-6) for file handling within zero-trust architectures.",
+        "hasDefinedTerm": [
+          {"@type": "DefinedTerm", "name": "ZS-1", "description": "Pass-through; implicit trust; no verification."},
+          {"@type": "DefinedTerm", "name": "ZS-2", "description": "Detection-based; identifies known threats."},
+          {"@type": "DefinedTerm", "name": "ZS-3", "description": "Isolation or flattening; behavioural containment."},
+          {"@type": "DefinedTerm", "name": "ZS-4", "description": "Rule-based sanitisation; removes active content."},
+          {"@type": "DefinedTerm", "name": "ZS-5", "description": "Transform to known-good template; rebuild within software model."},
+          {"@type": "DefinedTerm", "name": "ZS-6", "description": "Deterministic rebuild from a clean intermediary model; no source bytes retained; output validated to specification; may include independent verification."}
+        ]
       }
     </script>
   </head>
@@ -140,14 +94,21 @@
         </div>
       </header>
 
+      <section class="panel" id="overview">
+        <h2><span class="section-icon">📘</span>Zero-Trust Spectrum (Files) Overview</h2>
+        <p>The Zero-Trust Spectrum defines six progressive assurance levels (ZS-1 → ZS-6) describing how files are verified, controlled, and evidenced within zero-trust architectures. Levels advance from detection-based trust (ZS-1/2) to deterministic rebuild and independent verification (ZS-6). The framework is aligned with NIST SP-800-207, UK NCSC Zero-Trust Architecture, and CyBOK principles and published under CC BY 4.0 for open reference and adoption.</p>
+      </section>
+
       <section class="panel" id="contents">
         <h2>Contents</h2>
         <div class="contents-grid">
           <div class="contents-card">
             <h3>Orientation</h3>
             <ul>
+              <li><a href="#overview">Overview</a></li>
               <li><a href="#mission">Mission Snapshot</a></li>
               <li><a href="#scale">Rating Scale & Dimensions</a></li>
+              <li><a href="#definitions">ZS Level Definitions</a></li>
               <li><a href="#flatfile">Flat-file Export / Import</a></li>
             </ul>
           </div>
@@ -156,7 +117,8 @@
             <ul>
               <li><a href="#quick-picks">Decision Quick Picks</a></li>
               <li><a href="#levels">ZS-1 → ZS-6 Levels</a></li>
-              <li><a href="#eval-cues">Evaluation Cues</a> · <a href="#criteria">Criteria</a></li>
+              <li><a href="#criteria">Classification Criteria</a></li>
+              <li><a href="#eval-cues">Evaluation Cues</a></li>
             </ul>
           </div>
           <div class="contents-card">
@@ -245,6 +207,27 @@
           </div>
         </div>
       </section>
+      <section class="panel" id="definitions">
+        <h2><span class="section-icon">📊</span>ZS-Level Definitions</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Level</th><th>Label</th><th>Core Mechanism</th><th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>ZS-1</td><td>Pass-through</td><td>Implicit trust</td><td>Files accepted without verification; basic metadata checks only.</td></tr>
+              <tr><td>ZS-2</td><td>Detection</td><td>Known-threat identification</td><td>Signature/hash/pattern recognition detects known threats but cannot assure safety.</td></tr>
+              <tr><td>ZS-3</td><td>Isolation / Flattening</td><td>Behavioural containment</td><td>Executes or renders files in controlled environments to prevent direct interaction.</td></tr>
+              <tr><td>ZS-4</td><td>Sanitisation</td><td>Rule-based removal</td><td>Strips or deactivates risky features (macros, scripts, links) within the original file.</td></tr>
+              <tr><td>ZS-5</td><td>Transform</td><td>Rebuild from known-good template</td><td>Parses and reconstructs files to conform to safe models; removes unsafe components.</td></tr>
+              <tr><td>ZS-6</td><td>Deterministic Rebuild</td><td>Clean intermediary model</td><td>Files fully deconstructed and rebuilt from specification; no source bytes retained; output verified with audit evidence.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
 
       <section class="panel" id="flatfile">
         <h2><span class="section-icon">📄</span>Flat-file Export / Import</h2>
@@ -262,6 +245,7 @@
         <div class="banner">
           <strong>Baseline:</strong> Recommend ZS-6 wherever formats are supported and service objectives are met. Use ZS-5 only as a documented fallback for unsupported formats/SLO exceptions, and ZS-3 isolation for executables and unstructured binaries. Performance and coverage depend on implementation—verify with PoV data.
         </div>
+        <p class="muted">Operational note: Modern ZS-6 rebuild engines routinely deliver sub-100 ms latency for mid-size documents and scale horizontally in containerized deployments.</p>
         <ul class="quick-list">
           <li><strong>Performance ≠ level:</strong> Throughput/latency are architecture and tuning dependent; a well-engineered ZS-6 can outperform a poorly tuned ZS-2/5.</li>
           <li><strong>Format coverage is product-specific:</strong> Many ZS-6 offerings support dozens of formats—validate rebuild vs sanitize vs bypass per format.</li>
@@ -275,6 +259,25 @@
           <li><strong>Automation &amp; integration pipelines (API/SDK):</strong> Require flat-file interchange (XML/JSON schema) for validated objects feeding analytics, ETL, SIEM, or DLP workflows.</li>
           <li><strong>Developer tools &amp; installers:</strong> Docs/packages → ZS-5 (ZS-6 where supported). Executables → ZS-3 isolation plus repo/code-sign controls.</li>
         </ul>
+      </section>
+
+      <section class="panel" id="criteria">
+        <h2><span class="section-icon">📐</span>Classification Criteria</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Dimension</th><th>ZS-1</th><th>ZS-2</th><th>ZS-3</th><th>ZS-4</th><th>ZS-5</th><th>ZS-6</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Content verification</td><td>None</td><td>Partial (signatures)</td><td>Partial (behavioural)</td><td>Moderate</td><td>Full</td><td>Full (spec-level)</td></tr>
+              <tr><td>Structural enforcement</td><td>None</td><td>None</td><td>Partial</td><td>Moderate</td><td>Full (software)</td><td>Full + independent verification</td></tr>
+              <tr><td>Policy conformance</td><td>None</td><td>Basic</td><td>Contextual</td><td>Enforced rules</td><td>Full</td><td>Full, provable</td></tr>
+              <tr><td>Audit evidence</td><td>None</td><td>Minimal</td><td>Limited logs</td><td>Moderate</td><td>Comprehensive</td><td>Deterministic &amp; tamper-evident</td></tr>
+              <tr><td>Fidelity / usability</td><td>Full</td><td>Full</td><td>Read-only</td><td>High</td><td>High</td><td>Spec-compliant</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Evidence expectations:</strong> Classifications above ZS-4 require conformance testing, proof no source-file bytes persist, policy enforcement traceability, validation/verification steps, and reproducible audit trails.</p>
       </section>
 
       <section id="levels" class="panel">
