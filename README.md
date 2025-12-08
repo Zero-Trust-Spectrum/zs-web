@@ -1,6 +1,6 @@
 # Zero-Trust Spectrum — Files
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17576466.svg)](https://doi.org/10.5281/zenodo.17576466)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17573363.svg)](https://doi.org/10.5281/zenodo.17573363)
 
 
 **Framework defining measurable Zero-Trust assurance levels for file content (ZS-1 → ZS-6).**  
@@ -39,7 +39,7 @@ Applicable to:
 | **ZS-5** | Transform to templates | Software rebuild from known-good models |
 | **ZS-6** | Deterministic rebuild | Clean intermediary model; no source bytes retained; spec-level validation with audit evidence |
 
-For formal definitions and criteria, see the [Zero-Trust Spectrum (Files) reference](https://doi.org/10.5281/zenodo.17576466).
+For formal definitions and criteria, see the [Zero-Trust Spectrum (Files) reference](https://doi.org/10.5281/zenodo.17573363).
 
 ---
 
@@ -69,7 +69,7 @@ All contributions are released under CC BY 4.0.
 ## Citation
 If citing in research or policy:
 > Zero-Trust Spectrum — Files (ZS-1 → ZS-6), version 2025-11-10.  
-> DOI: [10.5281/zenodo.17576466](https://doi.org/10.5281/zenodo.17576466)
+> DOI: [10.5281/zenodo.17573363](https://doi.org/10.5281/zenodo.17573363)
 
 ---
 
