@@ -9,7 +9,7 @@ Aligned with **CyBOK · NCSC · NIST SP-800-207** · Licensed under **Creative C
 ---
 
 ## Overview
-The **Zero-Trust Spectrum (ZTS)** provides a reference model to classify and evaluate **file assurance levels** within Zero-Trust architectures.
+**Zero-Trust Spectrum (ZTS)** provides a reference model to classify and evaluate **file assurance levels** within Zero-Trust architectures.
 
 It defines six measurable levels (ZS-1 to ZS-6) describing how files are validated, sanitized, or rebuilt before use — from basic hygiene to deterministic reconstruction.
 
